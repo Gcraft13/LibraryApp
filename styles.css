@@ -3,3 +3,71 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.container {
+  display: grid;
+  grid-template-columns: 150px 4fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+.sidebar {
+  grid-area: 1/1/4/1;
+  background-color: blueviolet;
+  height: 100vh;
+  top: 0px;
+  position: sticky;
+
+  align-self: start;
+  position: sticky;
+  color: #fbf8ef;
+  padding: 20px 0 0 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.sidebar h2 {
+  padding-bottom: 20px;
+}
+
+.sidebar > ul {
+  list-style: none;
+  font-size: large;
+  font-weight: 600;
+}
+
+.sidebar li {
+  padding-bottom: 15px;
+}
+
+.header {
+  background-color: blue;
+  grid-area: 1/2/1/4;
+  position: sticky;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.main-content {
+  background-color: blanchedalmond;
+  grid-area: 2/2/3/4;
+  text-align: center;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-one {
+  background-color: white;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.delete-button {
+  display: flex;
+  justify-content: flex-end;
+}
