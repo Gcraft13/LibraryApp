@@ -72,6 +72,10 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.card-one:hover {
+  border: solid 5px green;
+}
+
 img {
   width: 200px;
   padding: 5px 15px 5px 15px;
@@ -105,4 +109,9 @@ img {
   display: flex;
   justify-content: flex-end;
   margin-right: 50px;
+}
+
+.add {
+  color: green;
+  background-color: lightgreen;
 }
