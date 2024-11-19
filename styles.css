@@ -40,7 +40,7 @@
 }
 
 .header {
-  background-color: blue;
+  background-color: #ff2929;
   grid-area: 1/2/1/4;
   position: sticky;
   padding: 25px;
@@ -49,13 +49,14 @@
 }
 
 .main-content {
-  background-color: blanchedalmond;
+  background-color: #ebeaff;
   grid-area: 2/2/3/4;
   text-align: center;
 }
 
 .main-content h2 {
   margin-top: 20px;
+  color: #3d3bf3;
 }
 
 .cards {
