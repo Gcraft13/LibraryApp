@@ -3,7 +3,8 @@ const deleteBtns = document.querySelectorAll(".delete");
 const addBtn = document.querySelector(".add");
 const card = document.querySelector(".card-one");
 const deleteBtnSection = document.querySelector(".delete-button");
-const OpenPopUp = document.querySelector(".popup");
+const dialog = document.querySelector("dialog");
+const removeBtn = document.getElementById("close");
 
 //delete book
 function deleteBook() {
@@ -39,8 +40,24 @@ for (var i = 0; i < deleteBtns.length; i++) {
 // }
 
 //Add the form
-addBtn.addEventListener("click", function () {
-  OpenPopUp.style.display = "block";
+addBtn.addEventListener("click", () => {
+  // OpenPopUp.style.display = "block";
+
+  dialog.showModal();
+});
+
+//Remove the form
+removeBtn.addEventListener("click", () => {
+  dialog.close();
+});
+
+//prevent modal from appearing on page reload
+if (sessionStorage.getItem("modalClosed") !== "true") {
+  document.querySelector("dialog").close();
+}
+document.getElementById("closeModal").addEventListener("click", function () {
+  document.querySelector("dialog").close();
+  sessionStorage.setItem("modalClosed", "true");
 });
 
 //The library functions

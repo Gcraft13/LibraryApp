@@ -19,8 +19,8 @@
           <li>option 3</li>
         </ul>
       </div>
-      <div class="popup" id="myForm">
-        <form>
+      <dialog open>
+        <form method="dialog">
           <label for="title">Book title:</label>
           <input type="text" id="title" name="title" /><br /><br />
           <label for="author">Author:</label>
@@ -30,10 +30,12 @@
           <label for="read">Read:</label>
           <input type="text" id="read" name="read" /><br /><br />
           <input type="submit" value="Submit" />
+          <button id="close">Close</button>
         </form>
-      </div>
+      </dialog>
+
       <div class="main-content">
-        <h2>Greg's Top Three Books</h2>
+        <h2>Greg's Collection</h2>
         <div class="cards">
           <div class="card-one">
             <div class="delete-button">
