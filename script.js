@@ -3,6 +3,7 @@ const deleteBtns = document.querySelectorAll(".delete");
 const addBtn = document.querySelector(".add");
 const card = document.querySelector(".card-one");
 const deleteBtnSection = document.querySelector(".delete-button");
+const OpenPopUp = document.querySelector(".popup");
 
 //delete book
 function deleteBook() {
@@ -37,6 +38,12 @@ for (var i = 0; i < deleteBtns.length; i++) {
 //   });
 // }
 
+//Add the form
+addBtn.addEventListener("click", function () {
+  OpenPopUp.style.display = "block";
+});
+
+//The library functions
 const myLibrary = [];
 
 function Book(title, author, pages, read) {
