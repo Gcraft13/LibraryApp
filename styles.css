@@ -94,6 +94,10 @@ img {
   justify-content: flex-end;
 }
 
+.delete:hover {
+  border: solid 2px blue;
+}
+
 .delete,
 .add {
   border-radius: 50%;
