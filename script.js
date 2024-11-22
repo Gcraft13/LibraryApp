@@ -5,6 +5,7 @@ const card = document.querySelector(".card-one");
 const deleteBtnSection = document.querySelector(".delete-button");
 const dialog = document.querySelector("dialog");
 const removeBtn = document.getElementById("close");
+const cardsSpace = document.querySelector(".cards");
 
 //delete book
 function deleteBook() {
@@ -82,3 +83,29 @@ function addBooktoLibrary(book) {
 }
 
 addBooktoLibrary(Hobbit);
+
+//Generating a new book card
+
+function generateCard() {
+  const newDiv = document.createElement("div");
+  const newImg = document.createElement("img");
+  const newButton = document.createElement("button");
+  const newDeleteBtnSpace = document.createElement("div");
+
+  cardsSpace.appendChild(newDiv);
+  newDiv.classList.add("card-one");
+
+  //add new card content elements
+  newDiv.appendChild(newImg);
+  newDiv.appendChild(newDeleteBtnSpace);
+  newDiv.appendChild(newButton);
+  newImg.src = "./Images/book.png";
+  newDeleteBtnSpace.classList.add(".delete-button");
+  newButton.classList.add(".delete");
+  const p1 = document.createElement("p");
+  const p2 = document.createElement("p");
+  p1.innerHTML = "Title:";
+  p2.innerHTML = "Author: ";
+  newDiv.appendChild(p1);
+  newDiv.appendChild(p2);
+}
