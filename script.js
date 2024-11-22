@@ -7,6 +7,8 @@ const dialog = document.querySelector("dialog");
 const removeBtn = document.getElementById("close");
 const cardsSpace = document.querySelector(".cards");
 
+//Generating a new book card
+
 //delete book
 function deleteBook() {
   if (card) {
@@ -84,28 +86,39 @@ function addBooktoLibrary(book) {
 
 addBooktoLibrary(Hobbit);
 
-//Generating a new book card
-
 function generateCard() {
   const newDiv = document.createElement("div");
-  const newImg = document.createElement("img");
-  const newButton = document.createElement("button");
-  const newDeleteBtnSpace = document.createElement("div");
+  const newDiv2 = document.createElement("div");
+  const newSpan = document.createElement("span");
 
-  cardsSpace.appendChild(newDiv);
+  //Creating a new book card
   newDiv.classList.add("card-one");
+  cardsSpace.appendChild(newDiv);
 
-  //add new card content elements
-  newDiv.appendChild(newImg);
-  newDiv.appendChild(newDeleteBtnSpace);
-  newDiv.appendChild(newButton);
+  // //adding new Delete Button Div and Delete Button
+  newDiv2.classList.add("delete-button");
+  // const newDeleteButton = document.createElement("button");
+  // newDeleteButton.innerHTML = "X";
+  // newDeleteButton.classList.add(".delete");
+  newSpan.innerHTML = "<button class=delete onclick=deleteBook()>X</button>";
+  newDiv2.appendChild(newSpan);
+  newDiv.appendChild(newDiv2);
+
+  //Adding new Card Info div
+  const newCardInfo = document.createElement("div");
+  newCardInfo.classList.add("card-info");
+  newDiv.appendChild(newCardInfo);
+  //adding new Image
+  const newImg = document.createElement("img");
+  newCardInfo.appendChild(newImg);
   newImg.src = "./Images/book.png";
-  newDeleteBtnSpace.classList.add(".delete-button");
-  newButton.classList.add(".delete");
+
+  // //add new paragraph content elements
+
   const p1 = document.createElement("p");
   const p2 = document.createElement("p");
   p1.innerHTML = "Title:";
   p2.innerHTML = "Author: ";
-  newDiv.appendChild(p1);
-  newDiv.appendChild(p2);
+  newCardInfo.appendChild(p1);
+  newCardInfo.appendChild(p2);
 }
