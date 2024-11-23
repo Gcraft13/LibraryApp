@@ -2,27 +2,31 @@ const mainPage = document.querySelector(".main-content");
 const deleteBtns = document.querySelectorAll(".delete");
 const addBtn = document.querySelector(".add");
 const card = document.querySelector(".card-one");
+const allTheCards = document.querySelectorAll(".card-one");
 const deleteBtnSection = document.querySelector(".delete-button");
 const dialog = document.querySelector("dialog");
 const removeBtn = document.getElementById("close");
 const cardsSpace = document.querySelector(".cards");
 
-//Generating a new book card
-
 //delete book
 function deleteBook() {
-  if (card) {
-    card.remove();
+  if (allTheCards) {
+    for (var i = 0; i < allTheCards.length; i++) {
+      allTheCards[i].addEventListener("click", function () {
+        allTheCards.remove();
+      });
+    }
+
     localStorage.setItem("card", "true");
   }
 }
 window.addEventListener("load", () => {
-  if (localStorage.getItem("card") == "true") {
+  if (localStorage.getItem("allTheCards") == "true") {
     deleteBook();
   }
 });
 
-//deleting function applied to all buttons
+//deletebutton function
 
 for (var i = 0; i < deleteBtns.length; i++) {
   deleteBtns[i].addEventListener("click", function (e) {
@@ -30,17 +34,6 @@ for (var i = 0; i < deleteBtns.length; i++) {
     parentCard.remove();
   });
 }
-
-// for (var i = 0; i < deleteBtns.length; i++) {
-//   deleteBtns[i].addEventListener("click", function (e) {
-//     window.addEventListener("load", () => {
-//       let parentCard = e.target.parentElement.parentElement;
-//       if (localStorage.getItem("card") == "true") {
-//         parentCard.remove();
-//       }
-//     });
-//   });
-// }
 
 //Add the form
 addBtn.addEventListener("click", () => {
@@ -78,32 +71,30 @@ function Book(title, author, pages, read) {
 
 const Hobbit = new Book("The Hobbit", "J.R.R. Tolkein", 295, "read");
 
-const tacticalBarbell = new Book("Tactical Barbell", "K Black", "150", "read");
-
 function addBooktoLibrary(book) {
   myLibrary.push(book);
 }
 
-addBooktoLibrary(Hobbit);
-
 function generateCard() {
   const newDiv = document.createElement("div");
   const newDiv2 = document.createElement("div");
-  const newSpan = document.createElement("span");
+
+  //setting delete function for buttons
 
   //Creating a new book card
   newDiv.classList.add("card-one");
-  cardsSpace.appendChild(newDiv);
-
   // //adding new Delete Button Div and Delete Button
   newDiv2.classList.add("delete-button");
-  // const newDeleteButton = document.createElement("button");
-  // newDeleteButton.innerHTML = "X";
-  // newDeleteButton.classList.add(".delete");
-  newSpan.innerHTML = "<button class=delete onclick=deleteBook()>X</button>";
-  newDiv2.appendChild(newSpan);
-  newDiv.appendChild(newDiv2);
+  const deleteButton = document.createElement("button");
+  deleteButton.innerHTML = "X";
+  deleteButton.classList.add("delete");
 
+  newDiv2.appendChild(deleteButton);
+  newDiv.appendChild(newDiv2);
+  //adding delete functionatlity to newly generated deletebuttons
+  deleteButton.addEventListener("click", function () {
+    newDiv.remove();
+  });
   //Adding new Card Info div
   const newCardInfo = document.createElement("div");
   newCardInfo.classList.add("card-info");
@@ -121,4 +112,5 @@ function generateCard() {
   p2.innerHTML = "Author: ";
   newCardInfo.appendChild(p1);
   newCardInfo.appendChild(p2);
+  cardsSpace.appendChild(newDiv);
 }
