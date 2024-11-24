@@ -108,9 +108,20 @@ function generateCard() {
 
   const p1 = document.createElement("p");
   const p2 = document.createElement("p");
+  const p3 = document.createElement("p");
+  const p4 = document.createElement("p");
   p1.innerHTML = "Title:";
   p2.innerHTML = "Author: ";
+  p3.innerHTML = "Pages: ";
+  p4.innerHTML = "Read: ";
   newCardInfo.appendChild(p1);
   newCardInfo.appendChild(p2);
+  newCardInfo.appendChild(p3);
+  newCardInfo.appendChild(p4);
   cardsSpace.appendChild(newDiv);
+  //adding read button
+  const readButton = document.createElement("button");
+  readButton.innerHTML = "Change Status to ";
+  readButton.classList.add("read-button");
+  newCardInfo.appendChild(readButton);
 }
