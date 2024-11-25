@@ -40,11 +40,19 @@ addBtn.addEventListener("click", () => {
   // OpenPopUp.style.display = "block";
 
   dialog.showModal();
+  localStorage.setItem("dialogShown", "true");
 });
 
 //Remove the form
-removeBtn.addEventListener("click", () => {
+removeBtn.addEventListener("click", (e) => {
+  e.preventDefault();
   dialog.close();
+  if (localStorage.getItem("dialogShown") === "true") {
+    // Prevent dialog from showing
+  }
+
+  // On dialog close
+  localStorage.removeItem("dialogShown");
 });
 
 //prevent modal from appearing on page reload
@@ -57,18 +65,6 @@ document.getElementById("close").addEventListener("click", function () {
 
 //The library functions
 const myLibrary = [];
-
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.info = function () {
-    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
-  };
-}
-
-const Hobbit = new Book("The Hobbit", "J.R.R. Tolkein", 295, "read");
 
 function addBooktoLibrary(book) {
   myLibrary.push(book);
@@ -125,12 +121,29 @@ function generateCard() {
   newCardInfo.appendChild(readButton);
 }
 
+function Book(bookTitle, author, pages, read) {
+  this.title = bookTitle;
+  this.author = author;
+  this.pages = pages;
+  this.read = read;
+
+  this.info = function () {
+    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
+  };
+}
+
 const submitBtn = document.getElementById("submit");
 const form = document.querySelector("form");
 
+//Submitting the form and acquring data
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const bookTitle = document.querySelector("#title").value;
+  const author = document.querySelector("#author").value;
+  const pages = document.querySelector("#pages").value;
+  const read = document.querySelector("#read").value;
 
-  console.log(bookTitle);
+  const book = new Book(bookTitle, author, pages, read);
+  addBooktoLibrary(book);
+  console.log(myLibrary);
 });
