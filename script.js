@@ -70,7 +70,7 @@ function addBooktoLibrary(book) {
   myLibrary.push(book);
 }
 
-function generateCard() {
+function generateCard(book) {
   const newDiv = document.createElement("div");
   const newDiv2 = document.createElement("div");
 
@@ -105,10 +105,11 @@ function generateCard() {
   const p2 = document.createElement("p");
   const p3 = document.createElement("p");
   const p4 = document.createElement("p");
-  p1.innerHTML = "Title:";
-  p2.innerHTML = "Author: ";
-  p3.innerHTML = "Pages: ";
-  p4.innerHTML = "Read: ";
+  p1.innerHTML = "Title: " + book.title;
+  p2.innerHTML = "Author: " + book.author;
+  p3.innerHTML = "Pages: " + book.pages;
+  p4.innerHTML = "Read: " + book.read;
+
   newCardInfo.appendChild(p1);
   newCardInfo.appendChild(p2);
   newCardInfo.appendChild(p3);
@@ -116,7 +117,7 @@ function generateCard() {
   cardsSpace.appendChild(newDiv);
   //adding read button
   const readButton = document.createElement("button");
-  readButton.innerHTML = "Change Status to ";
+  readButton.innerHTML = "Change Status";
   readButton.classList.add("read-button");
   newCardInfo.appendChild(readButton);
 }
@@ -145,5 +146,12 @@ form.addEventListener("submit", (event) => {
 
   const book = new Book(bookTitle, author, pages, read);
   addBooktoLibrary(book);
-  console.log(myLibrary);
+  generateCard(book);
+  return book.read;
+});
+
+readButton.addEventListener("click", function () {
+  if (book.read === "No") {
+    book.read === "Yes";
+  }
 });
