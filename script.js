@@ -48,12 +48,11 @@ removeBtn.addEventListener("click", () => {
 });
 
 //prevent modal from appearing on page reload
-if (sessionStorage.getItem("modalClosed") !== "true") {
+if (localStorage.getItem("modalClosed") !== "true") {
   document.querySelector("dialog").close();
 }
-document.getElementById("closeModal").addEventListener("click", function () {
+document.getElementById("close").addEventListener("click", function () {
   document.querySelector("dialog").close();
-  sessionStorage.setItem("modalClosed", "true");
 });
 
 //The library functions
@@ -125,3 +124,13 @@ function generateCard() {
   readButton.classList.add("read-button");
   newCardInfo.appendChild(readButton);
 }
+
+const submitBtn = document.getElementById("submit");
+const form = document.querySelector("form");
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const bookTitle = document.querySelector("#title").value;
+
+  console.log(bookTitle);
+});

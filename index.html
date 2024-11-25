@@ -20,8 +20,8 @@
         </ul>
       </div>
       <dialog open>
-        <form method="dialog">
-          <label for="title">Book title:</label>
+        <form method="get" id="book-form" action="">
+          <label for="title">Book title: </label>
           <input type="text" id="title" name="title" /><br /><br />
           <label for="author">Author:</label>
           <input type="text" id="author" name="author" /><br /><br />
@@ -34,7 +34,7 @@
             name="read"
             placeholder="Yes or No"
           /><br /><br />
-          <input type="submit" value="Submit" />
+          <input type="submit" id="submit" value="Submit" />
           <button id="close">Close</button>
         </form>
       </dialog>
