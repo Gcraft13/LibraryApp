@@ -65,10 +65,18 @@ document.getElementById("close").addEventListener("click", function () {
 });
 
 //The library functions
-const myLibrary = [];
+const myLibrary = [
+  (book1 = {
+    title: "The Hobbit",
+    author: "J.R.R. Tolkein",
+    pages: 265,
+    read: "Yes",
+  }),
+];
 
 function addBooktoLibrary(book) {
   myLibrary.push(book);
+  generateCard(book);
 }
 
 function generateCard(book) {
@@ -146,10 +154,10 @@ form.addEventListener("submit", (event) => {
 
   const book = new Book(bookTitle, author, pages, status);
   addBooktoLibrary(book);
+  form.reset();
+  dialog.close();
   let index = myLibrary.indexOf(book);
   let bookStatus = myLibrary[index].status;
-  generateCard(book);
-  isChecked();
 
   document.querySelectorAll(".read-button").forEach((button) => {
     button.addEventListener("click", function (e) {
