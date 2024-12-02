@@ -27,13 +27,9 @@
           <input type="text" id="author" name="author" /><br /><br />
           <label for="pages">Pages:</label>
           <input type="number" id="pages" name="pages" /><br /><br />
-          <label for="read">Read:</label>
-          <input
-            type="text"
-            id="read"
-            name="read"
-            placeholder="Yes or No"
-          /><br /><br />
+          <label for="read">Read the book?</label>
+          <input type="checkbox" name="status" id="status" />
+
           <input type="submit" id="submit" value="Submit" />
           <button id="close" type="button" formmethod="dialog">Close</button>
         </form>
@@ -41,18 +37,7 @@
 
       <div class="main-content">
         <h2>Greg's Collection</h2>
-        <div class="cards">
-          <!-- <div class="card-one">
-            <div class="delete-button">
-              <button class="delete">X</button>
-            </div>
-            <div class="card-info">
-              <img src="./Images/book.png" alt="the Hobbit" />
-              <p>Title: <em>The Hobbit</em></p>
-              <p>Author: J.R.R. Tolkein</p>
-            </div>
-          </div> -->
-        </div>
+        <div class="cards"></div>
         <div class="buttons">
           <button class="add">+</button>
           <!-- <button onclick="generateCard()">Add Card</button> -->

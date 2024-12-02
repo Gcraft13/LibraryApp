@@ -7,6 +7,7 @@ const deleteBtnSection = document.querySelector(".delete-button");
 const dialog = document.querySelector("dialog");
 const removeBtn = document.getElementById("close");
 const cardsSpace = document.querySelector(".cards");
+const readBook = document.querySelector(".read-button");
 
 //delete book
 function deleteBook() {
@@ -74,8 +75,6 @@ function generateCard(book) {
   const newDiv = document.createElement("div");
   const newDiv2 = document.createElement("div");
 
-  //setting delete function for buttons
-
   //Creating a new book card
   newDiv.classList.add("card-one");
   // //adding new Delete Button Div and Delete Button
@@ -108,7 +107,7 @@ function generateCard(book) {
   p1.innerHTML = "Title: " + book.title;
   p2.innerHTML = "Author: " + book.author;
   p3.innerHTML = "Pages: " + book.pages;
-  p4.innerHTML = "Read: " + book.read;
+  p4.innerHTML = "Read: " + book.status;
 
   newCardInfo.appendChild(p1);
   newCardInfo.appendChild(p2);
@@ -119,17 +118,18 @@ function generateCard(book) {
   const readButton = document.createElement("button");
   readButton.innerHTML = "Change Status";
   readButton.classList.add("read-button");
+  readButton.classList.add("read-button:hover");
   newCardInfo.appendChild(readButton);
 }
 
-function Book(bookTitle, author, pages, read) {
+function Book(bookTitle, author, pages, status) {
   this.title = bookTitle;
   this.author = author;
   this.pages = pages;
-  this.read = read;
+  this.status = status;
 
   this.info = function () {
-    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
+    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.status}`;
   };
 }
 
@@ -142,16 +142,30 @@ form.addEventListener("submit", (event) => {
   const bookTitle = document.querySelector("#title").value;
   const author = document.querySelector("#author").value;
   const pages = document.querySelector("#pages").value;
-  const read = document.querySelector("#read").value;
+  const status = document.querySelector("#status");
 
-  const book = new Book(bookTitle, author, pages, read);
+  const book = new Book(bookTitle, author, pages, status);
   addBooktoLibrary(book);
+  let index = myLibrary.indexOf(book);
+  let bookStatus = myLibrary[index].status;
   generateCard(book);
-  return book.read;
+  isChecked();
+
+  document.querySelectorAll(".read-button").forEach((button) => {
+    button.addEventListener("click", function (e) {
+      const BookIndex = e.currentTarget.getAttribute("status");
+      console.log(BookIndex);
+      if (BookIndex !== null) {
+        myLibrary[BookIndex].status =
+          myLibrary[BookIndex].status === "true" ? "false" : "true";
+      }
+    });
+  });
 });
 
-readButton.addEventListener("click", function () {
-  if (book.read === "No") {
-    book.read === "Yes";
-  }
-});
+// function isChecked() {
+//   const checkBox = document.getElementById("status");
+//   if (checkBox.isChecked) {
+//     book.status = "No";
+//   }
+// }
